@@ -78,7 +78,7 @@ function Export-NUnitReport {
 
         #Write root test-suite element containing all the describes
         $XmlWriter.WriteStartElement("test-suite")
-        $XmlWriter.WriteAttributeString("type", "Powershell")
+        $XmlWriter.WriteAttributeString("type", "Namespace")
         $XmlWriter.WriteAttributeString("name", $InputObject.Path)
         $XmlWriter.WriteAttributeString("executed", "True")
 
@@ -98,7 +98,7 @@ function Export-NUnitReport {
             #Write test suites
             $XmlWriter.WriteStartElement("test-suite")
 
-            $XmlWriter.WriteAttributeString("type", "Powershell")
+            $XmlWriter.WriteAttributeString("type", "TestFixture")
             $XmlWriter.WriteAttributeString("name", $DescribeInfo.name)
             $XmlWriter.WriteAttributeString("executed", "True")
             $XmlWriter.WriteAttributeString("result", $DescribeInfo.resultMessage)
@@ -210,7 +210,7 @@ function Get-RunTimeEnvironment() {
     @{
         "nunit-version" = "2.5.8.0"
         "os-version" = $osSystemInformation.Version
-        platform = $osSystemInformation.Name
+        platform = $osSystemInformation.Caption
         cwd = (Get-Location).Path #run path
         "machine-name" = $env:ComputerName
         user = $env:Username
