@@ -21,7 +21,7 @@ function GetFullPath ([string]$Path) {
         $error[0].TargetObject
     }
 }
-
+ 
 function Export-NUnitReport {
     param (
         [parameter(Mandatory=$true,ValueFromPipeline=$true)]
